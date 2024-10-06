@@ -12,7 +12,7 @@ async function RegisterUser(req,res) {
         res.sendStatus(401)
         return
     }
-}
+    }
 catch(error) 
 {
     res.sendStatus(401)
@@ -20,6 +20,8 @@ catch(error)
 }
 
     try {
+        // const newUser = User.createUser({email,username,password})
+        const newUser = new User({email,username,password})
         const userSaved = await newUser.save()
         console.log(`User Created Successfully.`)
         res.sendStatus(200)
