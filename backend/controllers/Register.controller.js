@@ -1,24 +1,34 @@
 const User = require('../models/User.model')
 
-function RegisterUser(req,res) {
+async function RegisterUser(req,res) {
     const {email,username,password} = req.body
     console.log(email + " " + username + ' ' + password);
-    
-    if(User.findOne({email}) || User.findOne({username})) {
+
+    try {
+    const user = await User.findOne({username})
+    const user2 = await User.findOne({username})
+
+    if(user || user2) {
         res.sendStatus(401)
-        return;
+        return
     }
-    const newUser = new User({email,username,password})
-    // await newUser.save()
-    newUser.save()
-    .then(()=> {
-        console.log('User Saved Successfully!')
+}
+catch(error) 
+{
+    res.sendStatus(401)
+    return
+}
+
+    try {
+        const userSaved = await newUser.save()
+        console.log(`User Created Successfully.`)
         res.sendStatus(200)
-    })
-    .catch((error)=> {
-        console.log(error)
+    }
+    catch(e) {
+        console.log(e)
         res.sendStatus(400)
-    })
+    }
+    
 }
 
 module.exports = RegisterUser

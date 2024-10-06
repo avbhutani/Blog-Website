@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
 import Header from '../components/Header'
 import './LoginRegister.css'
-
+import { useNavigate } from 'react-router-dom'
 // Login Page.
 
 export default function LoginPage() {
     const [username,setUsername] = useState('')
     const [password,setPassword] = useState('')
     const [message,setMessage] = useState('')
+    const navigate = useNavigate()
+    const [invalidAttempts, setInvalidAttempts] = useState(3)
     async function loginUser(ev) {
-        let count = 0;
+        var count = 3;
+        // let [count,setCount] = useState(3)
         ev.preventDefault()
         const res = await fetch('http://localhost:4000/login',{
             method:"POST",
@@ -17,14 +20,21 @@ export default function LoginPage() {
             headers: { 'Content-Type': 'application/json' }
         })
         if(res.status === 404) {
-            setMessage(`404 User Not Found! Try again! You are left with ${count} valid attempts`)
-            count--;
-            if(count === 0) {
+            setInvalidAttempts((invalidAttempts)=> invalidAttempts - 1)
+            setMessage(`404 User Not Found! Try again! You are left with ${invalidAttempts} valid attempts`)
+            setTimeout(()=> {
+                setMessage(``)
+            },2000)
+            if(invalidAttempts == 0) {
                 setMessage(`Tryouts failed! Redirecting to Register Page.`)
                 setTimeout(()=>{
-                    location.assign('/register')
+                    navigate('/register')
                 },2000)
             }
+        }
+        else if(res.status === 401) {
+            setMessage(`Check Password and Try Again.`)
+            setTimeout(()=> {setMessage('')},2000)
         }
         else if(res.status === 200) {
             setMessage('Login Successful.')
@@ -41,11 +51,11 @@ export default function LoginPage() {
             <input type="text"
             value={username}
             onChange={(ev)=>setUsername(ev.target.value)}
-            placeholder="Username" />
+            placeholder="Username" required/>
             <input type="password" 
             value={password}
             onChange={(ev)=> setPassword(ev.target.value)}
-            placeholder="Password" />
+            placeholder="Password" required />
             <button>Login</button>
             <h4>{message}</h4>
         </form>
