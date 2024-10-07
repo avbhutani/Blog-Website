@@ -1,6 +1,7 @@
 form.login, form.register {
     max-width: 400px;
     margin: 0 auto;
+    
 }
 
 input {
@@ -37,3 +38,4 @@ button:active {
 h4 {
     color: red;
 }
+

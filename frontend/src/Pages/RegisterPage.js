@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import { useState } from 'react';
 import axios from 'axios'
 import 'react-toastify/dist/ReactToastify.css';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 import { ToastContainer, toast } from 'react-toastify';
 import validator from 'validator'
@@ -11,7 +12,13 @@ import { json } from 'react-router-dom';
 // Register Page.
 
 export default function RegisterPage() {
-
+  async function onChange(value) {
+    if(!value) {
+      alert('Confirm that you are not a robot.')
+      return
+    }
+    console.log(value)
+  }
   // Use States
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -65,6 +72,10 @@ export default function RegisterPage() {
           onChange={(ev) => setPassword(ev.target.value)} // Corrected
           placeholder="Password"
           />
+          <ReCAPTCHA
+                sitekey='6LfKZ1oqAAAAAIvlgBIH6CV2SgoSBrGkZKROcbIe'
+                onChange={onChange} className='recaptcha'
+            />
 
         <button>Register</button>
         <h4>{message}</h4>
