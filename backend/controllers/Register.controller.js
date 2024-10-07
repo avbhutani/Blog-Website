@@ -2,6 +2,7 @@ const User = require("../models/User.model");
 const jwt = require("jsonwebtoken");
 const env = require("dotenv").config();
 
+// Controller for Registering the User.
 async function RegisterUser(req, res) {
   try {
     const { email, username, password } = req.body;

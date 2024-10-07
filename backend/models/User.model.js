@@ -8,17 +8,16 @@ const UserSchema = new mongoose.Schema({
     },
     username: {
         type:String,
-        required:true,
-        unique:true
+        required:true
     },
     password: {
         type:String,
         required:true,
     }
-})
+},{timestamps:true})
 
 UserSchema.pre('save',async function(next){
-    const user = this;
+    const user = this
     if (user.isModified('password')) {
         try {
             // Perform your pre-computation (e.g., hashing the password)

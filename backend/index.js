@@ -1,4 +1,6 @@
 const express = require('express')
+const jwt = require('jsonwebtoken')
+const cookieSession = require('cookie-session')
 const app = express()
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -8,6 +10,10 @@ const LoginUser = require('./controllers/Login.controller')
 require('./db/connect')
 
 
+// app.set(
+//     'trust proxy',true
+// )
+
 // This is essential so as to send the json over the request, as without it
 // the user will not be able to cater to the request.
 app.use(bodyParser.json())
@@ -16,6 +22,11 @@ app.use(bodyParser.json())
 // the backend, the cors issue will arise, if this is not used properly.
 app.use(cors())
 
+
+// app.use(cookieSession({
+//     signed:false,
+//     secure:false
+// }))
 // Used for connecting the database.
 // app.use(connectDB)
 // setting up the api's.
