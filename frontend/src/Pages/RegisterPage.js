@@ -1,6 +1,6 @@
 import './LoginRegister.css';
 import Header from '../components/Header';
-import { useState } from 'react';
+import { useState,useRef } from 'react';
 import axios from 'axios'
 import 'react-toastify/dist/ReactToastify.css';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -12,13 +12,12 @@ import { json } from 'react-router-dom';
 // Register Page.
 
 export default function RegisterPage() {
+  const recaptchaRef = useRef()
+
   async function onChange(value) {
-    if(!value) {
-      alert('Confirm that you are not a robot.')
-      return
-    }
     console.log(value)
   }
+
   // Use States
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -28,15 +27,23 @@ export default function RegisterPage() {
   async function register(ev) {
     ev.preventDefault();
     
+    // Check if the checkbox is ticked or not.
+    if(!recaptchaRef.current.getValue()) {
+      setMessage(`Kindly Tick The Checkbox!`)
+      return
+    }
+
     try{
       const res = await axios.post('http://localhost:4000/register', {
         email,
         username,
         password
       });
+      
       setMessage(res.data.message)
     }
     catch(error) {
+      recaptchaRef.current.reset()
       console.log(`Axios Error: ${error}`);
     }
   }
@@ -54,7 +61,7 @@ export default function RegisterPage() {
               setEmail(ev.target.value)
             }} 
             placeholder="Email"
-            />
+            required />
         <input
           type="text"
           value={username}
@@ -64,15 +71,16 @@ export default function RegisterPage() {
             }} 
             // Corrected
             placeholder="Username"
-            />
+            required />
 
         <input
           type="password"
           value={password}
           onChange={(ev) => setPassword(ev.target.value)} // Corrected
           placeholder="Password"
-          />
+          required />
           <ReCAPTCHA
+                ref={recaptchaRef}
                 sitekey='6LfKZ1oqAAAAAIvlgBIH6CV2SgoSBrGkZKROcbIe'
                 onChange={onChange} className='recaptcha'
             />

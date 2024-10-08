@@ -11,37 +11,28 @@ export default function LoginPage() {
     const [username,setUsername] = useState('')
     const [password,setPassword] = useState('')
     const [message,setMessage] = useState('')
-    const [captchaValue,setcaptchaValue] = useState(null)
     
-    function onChange(value) {
-        setcaptchaValue(value)
-    }
-    const navigate = useNavigate()
-    
-    async function loginUser(event) {
-        console.log(recaptchaRef);
+    async function loginUser(event) 
+    {
         event.preventDefault()
-        if(!captchaValue) {
-            setMessage(`Please Verify if you are human.`)
+        
+        if(!recaptchaRef.current.getValue()) {
+            setMessage(`Kindly Tick The Checkbox!`)
             return
         }
+
         try {const res = await axios.post('http://localhost:4000/login',{
             username,
             password
         })
         setMessage(res.data.message)
-
-        if(!res.data.password){
-            recaptchaRef.current.reset()
-            setcaptchaValue(null)
-        }
-
-        console.log(res)
     }
-    catch(error) {
-        console.log(error)
+    catch(error) 
+    {
+        setMessage(error.response.data.msg)
+        recaptchaRef.current.reset()
     }
-    }
+}
 
 
 
@@ -61,7 +52,7 @@ export default function LoginPage() {
             <ReCAPTCHA
             ref={recaptchaRef}
                 sitekey= '6LfKZ1oqAAAAAIvlgBIH6CV2SgoSBrGkZKROcbIe'
-                onChange={onChange} className='recaptcha'
+                className='recaptcha'
             />
             <button>Login</button>
             <h4>{message}</h4>
