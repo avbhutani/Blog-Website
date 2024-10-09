@@ -1,5 +1,7 @@
 const User = require('../models/User.model')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
 
 
 async function LoginUser(req, res) {
@@ -13,12 +15,21 @@ async function LoginUser(req, res) {
             if(!isMatch){
                 throw new Error('Invalid Credentials.')
             }
-            return res.send({message:'Logging in... Please Wait.'})
+            jwt.sign({id:user._id,username},process.env.JWT_KEY,{expiresIn:60000},(err,token)=> {
+                res.cookie('token', token, {
+                    httpOnly: true, // Prevents client-side JavaScript from accessing the cookie
+                    secure: process.env.NODE_ENV === 'production', // Send cookie only over HTTPS in production
+                    sameSite: 'strict' // Helps mitigate CSRF attacks
+                }); 
+                return res.send({token, message:"Logging In... Please Wait."})
+            })
     }
     catch(error) {
-        res.status(404).send({msg:error.message})
+        return res.send({message:'Wrong Password. Try Again.'})
     }
 }
+
+
 
 
 

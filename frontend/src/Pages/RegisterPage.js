@@ -13,7 +13,10 @@ import { json } from 'react-router-dom';
 
 export default function RegisterPage() {
   const recaptchaRef = useRef()
+  const userInputRef = useRef()
+  const passwordInputRef = useRef()
 
+  
   async function onChange(value) {
     console.log(value)
   }
@@ -26,7 +29,7 @@ export default function RegisterPage() {
 
   async function register(ev) {
     ev.preventDefault();
-    
+
     // Check if the checkbox is ticked or not.
     if(!recaptchaRef.current.getValue()) {
       setMessage(`Kindly Tick The Checkbox!`)
@@ -39,7 +42,7 @@ export default function RegisterPage() {
         username,
         password
       });
-      
+
       setMessage(res.data.message)
     }
     catch(error) {
@@ -63,7 +66,7 @@ export default function RegisterPage() {
             placeholder="Email"
             required />
         <input
-          type="text"
+          type="text" ref={userInputRef}
           value={username}
           onChange={(ev) => 
             {
@@ -75,7 +78,7 @@ export default function RegisterPage() {
 
         <input
           type="password"
-          value={password}
+          value={password} ref={passwordInputRef}
           onChange={(ev) => setPassword(ev.target.value)} // Corrected
           placeholder="Password"
           required />

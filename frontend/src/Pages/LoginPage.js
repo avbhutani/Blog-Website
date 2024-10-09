@@ -4,10 +4,13 @@ import './LoginRegister.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import ReCAPTCHA from "react-google-recaptcha";
+import { useCookies } from 'react-cookie';
+
+
 // Login Page.
 export default function LoginPage() {
     const recaptchaRef = useRef(); 
-    
+    const [cookies, setCookie] = useCookies(['token'])
     const [username,setUsername] = useState('')
     const [password,setPassword] = useState('')
     const [message,setMessage] = useState('')
@@ -16,21 +19,28 @@ export default function LoginPage() {
     {
         event.preventDefault()
         
-        if(!recaptchaRef.current.getValue()) {
-            setMessage(`Kindly Tick The Checkbox!`)
-            return
-        }
+        // ### Unticked for convenience ###
 
-        try {const res = await axios.post('http://localhost:4000/login',{
+        // if(!recaptchaRef.current.getValue()) {
+        //     setMessage(`Kindly Tick The Checkbox!`)
+        //     return
+        // }
+
+        // ### 
+
+        
+        try {
+            // const myCookie = cookies.cookieName;
+            const res = await axios.post('http://localhost:4000/login',{
             username,
             password
         })
         setMessage(res.data.message)
+        console.log(res.data.token)
     }
     catch(error) 
     {
-        setMessage(error.response.data.msg)
-        recaptchaRef.current.reset()
+        setMessage(res.data.message)
     }
 }
 
@@ -49,11 +59,11 @@ export default function LoginPage() {
             value={password}
             onChange={(ev)=> setPassword(ev.target.value)}
             placeholder="Password" required />
-            <ReCAPTCHA
+            {/* <ReCAPTCHA
             ref={recaptchaRef}
                 sitekey= '6LfKZ1oqAAAAAIvlgBIH6CV2SgoSBrGkZKROcbIe'
                 className='recaptcha'
-            />
+            /> */}
             <button>Login</button>
             <h4>{message}</h4>
         </form>

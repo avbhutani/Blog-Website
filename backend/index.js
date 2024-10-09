@@ -7,6 +7,8 @@ const cors = require('cors')
 const env= require('dotenv').config()
 const RegisterUser = require('./controllers/Register.controller')
 const LoginUser = require('./controllers/Login.controller')
+const cookieParser = require('cookie-parser')
+const Auth = require('./middlewares/Auth.middleware')
 require('./db/connect')
 
 
@@ -20,8 +22,11 @@ app.use(bodyParser.json())
 
 // this is used so that the frontend will be able to communicate with 
 // the backend, the cors issue will arise, if this is not used properly.
-app.use(cors())
-
+app.use(cors({
+    origin: 'http://localhost:3000',  // Replace with your frontend URL
+    methods: 'GET,POST,PUT,DELETE',
+    credentials: true, // If you are using cookies or HTTP authentication
+  }));
 
 // app.use(cookieSession({
 //     signed:false,
@@ -31,8 +36,11 @@ app.use(cors())
 // app.use(connectDB)
 // setting up the api's.
 
-app.get('/',(req,res)=> {
-    res.sendStatus(200).json({"Message":"Send Request to Particular APIs"})
+app.use(cookieParser())
+
+
+app.post('/',Auth,function(req,res) {
+    res.status(200).send({message:'Port working fine'})
 })
 
 
@@ -41,7 +49,12 @@ app.post('/register',RegisterUser)
 
 
 // Logging the user.
-app.post('/login',LoginUser)
+app.post('/login',Auth,LoginUser)
+
+
+app.post('/profile',Auth,(req,res)=> {
+    res.send({message:'Verified'})
+})
 
 
 // setting the app.listen(port), that is the port that the server will be
