@@ -15,12 +15,12 @@ async function LoginUser(req, res) {
             if(!isMatch){
                 throw new Error('Invalid Credentials.')
             }
-            jwt.sign({id:user._id,username},process.env.JWT_KEY,{expiresIn:60000},(err,token)=> {
+            jwt.sign({id:user._id,username},process.env.JWT_KEY,{expiresIn:500},(err,token)=> {
                 res.cookie('token', token, {
                     httpOnly: true, // Prevents client-side JavaScript from accessing the cookie
                     secure: process.env.NODE_ENV === 'production', // Send cookie only over HTTPS in production
                     sameSite: 'strict' // Helps mitigate CSRF attacks
-                }); 
+                });
                 return res.send({token, message:"Logging In... Please Wait."})
             })
     }
@@ -28,12 +28,5 @@ async function LoginUser(req, res) {
         return res.send({message:'Wrong Password. Try Again.'})
     }
 }
-
-
-
-
-
-
-
 
 module.exports = LoginUser
