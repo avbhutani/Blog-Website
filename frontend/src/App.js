@@ -6,6 +6,7 @@ import ProfilePage from './Pages/ProfilePage'
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 import HomePage from './Pages/HomePage'
+
 axios.defaults.withCredentials = true;
 
 function App() {

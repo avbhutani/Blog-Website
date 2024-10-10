@@ -1,11 +1,13 @@
-import React, { useState,useRef,useEffect} from 'react'
+import React, { useState,useRef,useContext,useEffect} from 'react'
 import Header from '../components/Header'
 import './LoginRegister.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import ReCAPTCHA from "react-google-recaptcha";
-import { useCookies } from 'react-cookie';
+import {UserContext} from '../contexts/UserContext'
+import ReCAPTCHA from "react-google-recaptcha"
+import { useCookies } from 'react-cookie'
 import CheckAccess from '../utils/CheckAccess'
+
 // Login Page.
 export default function LoginPage() {
     const recaptchaRef = useRef(); 
@@ -13,6 +15,13 @@ export default function LoginPage() {
     const [password,setPassword] = useState('')
     const [message,setMessage] = useState('')
     const navigate = useNavigate()
+    const user = useContext(UserContext)
+
+    useEffect(()=> {
+        console.log(user)
+        navigate('/')
+    },[user])
+    
     async function loginUser(event) 
     {
         event.preventDefault()
@@ -33,8 +42,16 @@ export default function LoginPage() {
             password
         })
         setMessage(res.data.message)
-        console.log(res.data.token)
-        navigate('/')
+        // UserContext.setUser(res)
+        const userDetails = res.data.user
+        user.setUser(userDetails)
+        console.log(user.username)
+        // console.log(UserContext.getUser)
+        
+        
+        // console.log(user)
+        // console.log(res.data.token)
+        // navigate('/')
     }
     catch(error) 
     {

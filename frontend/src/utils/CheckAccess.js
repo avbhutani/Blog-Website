@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 const CheckAccess = (redirectUrl) => {
     const [username, setUsername] = useState('');
-    // const [id,setId] = useState('')
     // const [user,setUser] = useState(null)
     const navigate = useNavigate();
 

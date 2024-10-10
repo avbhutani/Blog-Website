@@ -47,6 +47,7 @@ app.get('/profile',(req,res)=> {
     try {
         jwt.verify(token,process.env.JWT_KEY)
         const user = jwt.decode(token)
+        
         console.log(user)
         res.status(200).send({username:user.username,id:user.id})
     }
@@ -55,7 +56,17 @@ app.get('/profile',(req,res)=> {
     }
 })
 
-app.post('/logout',LogoutUser)
+app.post('/logout',(req,res)=> {
+    const token = req.cookies.token
+    try {
+        jwt.verify(token,process.env.JWT_KEY)
+        const user = jwt.decode(token)
+        res.status(200)
+    }
+    catch(error) {
+        res.status(401).send({message:'Unauthorized'})
+    }
+})
 
 
 
