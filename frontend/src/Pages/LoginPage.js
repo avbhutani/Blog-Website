@@ -15,13 +15,7 @@ export default function LoginPage() {
     const [password,setPassword] = useState('')
     const [message,setMessage] = useState('')
     const navigate = useNavigate()
-    const user = useContext(UserContext)
 
-    useEffect(()=> {
-        console.log(user)
-        navigate('/')
-    },[user])
-    
     async function loginUser(event) 
     {
         event.preventDefault()
@@ -37,25 +31,17 @@ export default function LoginPage() {
 
 
         try {
-            const res = await axios.post('http://localhost:4000/login',{
+            var res = await axios.post('http://localhost:4000/login',{
             username,
             password
         })
         setMessage(res.data.message)
-        // UserContext.setUser(res)
-        const userDetails = res.data.user
-        user.setUser(userDetails)
-        console.log(user.username)
-        // console.log(UserContext.getUser)
-        
-        
-        // console.log(user)
-        // console.log(res.data.token)
-        // navigate('/')
+        navigate('/')
     }
     catch(error) 
     {
-        setMessage(res.data.message)
+        // setMessage(error)
+        console.log(error)
     }
 }
 

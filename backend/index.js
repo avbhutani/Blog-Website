@@ -58,14 +58,16 @@ app.get('/profile',(req,res)=> {
 
 app.post('/logout',(req,res)=> {
     const token = req.cookies.token
-    try {
-        jwt.verify(token,process.env.JWT_KEY)
-        const user = jwt.decode(token)
-        res.status(200)
+    if (token) {
+        // Clear the 'token' cookie, make sure options match those used when setting the cookie
+        res.clearCookie('token', {
+            path: '/',        // Ensure the path matches how the cookie was set
+            httpOnly: true,   // Match HttpOnly flag if it was set
+            secure: true,     // Match Secure flag (only for HTTPS)
+            sameSite: 'None'  // Match SameSite attribute if applicable
+        });
     }
-    catch(error) {
-        res.status(401).send({message:'Unauthorized'})
-    }
+    return res.status(200).send('Logged out'); 
 })
 
 
