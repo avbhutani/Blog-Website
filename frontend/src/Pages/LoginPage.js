@@ -18,8 +18,7 @@ export default function LoginPage() {
     async function loginUser(event) 
     {
         event.preventDefault()
-        
-        
+    
         // ### Unticked for convenience DOS Attack Prevention. ###
 
         // if(!recaptchaRef.current.getValue()) {

@@ -22,14 +22,22 @@ export default function Header() {
   }
     return (
         <header>
-        <Link to = '/' className = 'logo'>Home</Link>
       <nav>
-        <Link to='/profile'>Profile</Link>
-        {user ?<Link to='/logout' onClick={logoutUser}>Logout</Link>:(
-        <>  
-        <Link to='/login'>Login</Link>
-        <Link to='/register'>Register</Link>
-        </>
+        
+        {user ?(<div className="header-loggedin">
+          <div className="header-loggedin-left">
+          <Link to='/' className="home">Home</Link>
+          <Link to='/profile' className="profile">Profile</Link>
+          </div>
+        <div className="header-loggedin-right">
+        <Link to='/logout' onClick={logoutUser} className="logout">Logout</Link>
+        </div>
+          </div>) 
+        :(
+        <div className="header-loggedout">  
+        <Link to='/login' className="login">Login</Link>
+        <Link to='/register' className="register">Register</Link>
+          </div>
       )}
   
       </nav>

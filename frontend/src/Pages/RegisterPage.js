@@ -46,6 +46,7 @@ export default function RegisterPage() {
       });
       
       setMessage(res.data.message)
+      navigate('/')
     }
     catch(error) {
       recaptchaRef.current.reset()
