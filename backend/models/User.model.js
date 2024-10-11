@@ -1,14 +1,17 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
+const { isLowercase } = require('validator')
 // Creating the user schema.
 const UserSchema = new mongoose.Schema({
     email:{
         type:String,
-        unique:true
+        unique:true,
+        lowercase:true
     },
     username: {
         type:String,
-        required:true
+        required:true,
+        lowercase:true
     },
     password: {
         type:String,

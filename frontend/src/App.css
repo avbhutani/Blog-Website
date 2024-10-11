@@ -4,31 +4,16 @@
 body {
   color:#222;
   text-align: center;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
 }
 main {
   padding: 10px;
   max-width: 500px;
   margin: 0 auto;
-}
-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 50px; 
-  align-items: center;
-  margin-top:20px;
-  a {
-    text-decoration: none;
-    color: inherit;
-
-    .logo {
-      font-weight: bold;
-    }
-  }
-  
-  nav {
-    display: flex;
-    gap: 15px;
-  }
 }
 
 img {

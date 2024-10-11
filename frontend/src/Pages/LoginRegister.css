@@ -1,7 +1,15 @@
+
 form.login, form.register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     max-width: 400px;
     margin: 0 auto;
-    
+    a {
+        color: red;
+        text-decoration: underline;
+    }
 }
 
 input {
