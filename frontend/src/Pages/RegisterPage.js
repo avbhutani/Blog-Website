@@ -10,6 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import validator from 'validator'
 import { json } from 'react-router-dom';
 import GetUser from '../utils/GetUser';
+import CheckAccess from '../utils/CheckAccess';
 // Register Page.
 
 export default function RegisterPage() {
@@ -43,7 +44,7 @@ export default function RegisterPage() {
         username,
         password
       });
-
+      
       setMessage(res.data.message)
     }
     catch(error) {

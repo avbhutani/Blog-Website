@@ -22,8 +22,7 @@ async function LoginUser(req, res) {
                     secure: process.env.NODE_ENV === 'production', // Send cookie only over HTTPS in production
                     sameSite: 'strict' // Helps mitigate CSRF attacks
                 });
-                const userCredentials = {username:username,id:user._id}
-                return res.send({user:userCredentials,message:"Logging In... Please Wait."})
+                return res.send({message:"Logging In... Please Wait."})
             })
     }
     catch(error) {

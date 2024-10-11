@@ -7,7 +7,6 @@ import {UserContext} from '../contexts/UserContext'
 import ReCAPTCHA from "react-google-recaptcha"
 import { useCookies } from 'react-cookie'
 import GetUser from '../utils/GetUser'
-import CheckAccess from '../utils/CheckAccess'
 // Login Page.
 export default function LoginPage() {
     const recaptchaRef = useRef(); 
@@ -41,9 +40,10 @@ export default function LoginPage() {
     }
     catch(error) 
     {
-        // setMessage(error)
         console.log(error)
     }
+
+    // This will be executed when the "/login api" is not available
 }
 
     return (
