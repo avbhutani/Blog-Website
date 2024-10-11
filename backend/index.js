@@ -8,7 +8,6 @@ const RegisterUser = require('./controllers/Register.controller')
 const LoginUser = require('./controllers/Login.controller')
 const cookieParser = require('cookie-parser')
 const Auth = require('./middlewares/Auth.middleware')
-const LogoutUser = require('./controllers/Logout.controller')
 require('./db/connect')
 
 

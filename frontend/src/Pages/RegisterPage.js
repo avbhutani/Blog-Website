@@ -1,25 +1,26 @@
 import './LoginRegister.css';
 import Header from '../components/Header';
-import { useState,useRef } from 'react';
+import { useState,useRef, useEffect } from 'react';
 import axios from 'axios'
 import 'react-toastify/dist/ReactToastify.css';
 import ReCAPTCHA from 'react-google-recaptcha';
-
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie'
 import { ToastContainer, toast } from 'react-toastify';
 import validator from 'validator'
 import { json } from 'react-router-dom';
-
+import GetUser from '../utils/GetUser';
 // Register Page.
 
 export default function RegisterPage() {
   const recaptchaRef = useRef()
   const userInputRef = useRef()
   const passwordInputRef = useRef()
-
-  
+  const navigate = useNavigate()
   async function onChange(value) {
     console.log(value)
   }
+
 
   // Use States
   const [username, setUsername] = useState('')
@@ -90,6 +91,7 @@ export default function RegisterPage() {
 
         <button>Register</button>
         <h4>{message}</h4>
+        <a href="/login">Already a User? Login Now!</a>
       </form>
     </>
   );

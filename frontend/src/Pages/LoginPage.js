@@ -6,8 +6,8 @@ import axios from 'axios'
 import {UserContext} from '../contexts/UserContext'
 import ReCAPTCHA from "react-google-recaptcha"
 import { useCookies } from 'react-cookie'
+import GetUser from '../utils/GetUser'
 import CheckAccess from '../utils/CheckAccess'
-
 // Login Page.
 export default function LoginPage() {
     const recaptchaRef = useRef(); 
@@ -15,12 +15,13 @@ export default function LoginPage() {
     const [password,setPassword] = useState('')
     const [message,setMessage] = useState('')
     const navigate = useNavigate()
-
+    
     async function loginUser(event) 
     {
         event.preventDefault()
         
-        // ### Unticked for convenience ###
+        
+        // ### Unticked for convenience DOS Attack Prevention. ###
 
         // if(!recaptchaRef.current.getValue()) {
         //     setMessage(`Kindly Tick The Checkbox!`)
@@ -65,6 +66,7 @@ export default function LoginPage() {
             /> */}
             <button>Login</button>
             <h4>{message}</h4>
+            <a href="/register">Not a User? Register Now!</a>
         </form>
         </>
     )
