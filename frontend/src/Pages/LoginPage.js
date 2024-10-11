@@ -50,7 +50,7 @@ export default function LoginPage() {
         <>
         <Header />
         <h1>Login</h1>
-        <form action="" className="login" onSubmit={loginUser}>
+        <form  className="login" onSubmit={loginUser}>
             <input type="text"
             value={username}
             onChange={(ev)=>setUsername(ev.target.value)}
