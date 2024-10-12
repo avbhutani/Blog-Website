@@ -2,9 +2,11 @@ const express = require('express')
 const UserRoutes = express()
 const jwt = require('jsonwebtoken')
 const CreatePostController = require('../controllers/userControllers/CreatePost.controller')
-
+const GetAllPosts = require('../controllers/userControllers/GetAllPosts.controller')
 // Create a new Post
-UserRoutes.post('/user/createPost',CreatePostController)
+UserRoutes.post('/user/createNewPost',CreatePostController)
+
+UserRoutes.get('/allposts',GetAllPosts)
 
 UserRoutes.get('/profile',(req,res)=> {
     const token = req.cookies.token
