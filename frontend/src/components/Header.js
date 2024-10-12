@@ -24,10 +24,12 @@ export default function Header() {
         <header>
       <nav>
         
-        {user ?(<div className="header-loggedin">
+        {user ?(
+          <div className="header-loggedin">
           <div className="header-loggedin-left">
           <Link to='/' className="home">Home</Link>
           <Link to='/profile' className="profile">Profile</Link>
+          <Link to='/createPost' className="createPost">Create Post</Link>
           </div>
         <div className="header-loggedin-right">
         <Link to='/logout' onClick={logoutUser} className="logout">Logout</Link>

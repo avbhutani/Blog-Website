@@ -1,0 +1,12 @@
+.post {
+    display: flex;
+    align-items: center;
+    background-color: rgb(81, 233, 244);
+    max-width: 70%;
+
+    .post-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: right;
+    }
+}

@@ -1,13 +1,13 @@
 // userId, [post]
 const mongoose = require('mongoose')
-const Post = require('./Post.model')
+const Post = require('./UserPost.model')
 
-const PostsSchema = new mongoose.model({
+const PostsSchema = new mongoose.Schema({
     userId: {
         type:String,
         required:true
     },
-    Posts:[Post]
+    Posts:[{type:mongoose.Schema.Types.ObjectId,ref:'UserPost'}]
 })
 
 const Posts = mongoose.model('Posts',PostsSchema)

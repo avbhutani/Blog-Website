@@ -1,0 +1,25 @@
+.create-post-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2% 5%;
+
+    h1 {
+        color: rgb(23, 131, 233);
+    }
+
+    
+    .new-post-title {
+        font-weight: bolder;
+        font-size: 20px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    textarea {
+        min-width: 100%;
+        min-height: 50vh;
+        font-size: 18px;
+    }
+}
