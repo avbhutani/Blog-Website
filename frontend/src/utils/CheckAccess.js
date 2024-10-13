@@ -19,7 +19,6 @@ const CheckAccess = (redirectUrl) => {
                     withCredentials: true, 
                 });
                 setUser(res.data)
-                console.log(user)
             } catch (error) {
                 if(redirectUrl)
                     navigate(redirectUrl);
