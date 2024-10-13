@@ -9,7 +9,7 @@ const PostsList = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch('http://localhost:4000/allPosts'); // Replace with your API URL
+                const response = await fetch('http://localhost:4000/allPosts');
                 const data = await response.json();
                 setPosts(data); // Store the fetched posts in state
             } catch (error) {

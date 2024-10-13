@@ -9,7 +9,7 @@ UserRoutes.post('/user/createNewPost',CreatePostController)
 
 UserRoutes.get('/allposts',GetAllPosts)
 
-UserRoutes.get('/getUserPost',GetUserPost)
+UserRoutes.get('/user/posts',GetUserPost)
 
 UserRoutes.get('/profile',(req,res)=> {
     const token = req.cookies.token

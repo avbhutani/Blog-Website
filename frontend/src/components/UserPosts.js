@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState,react } from "react"
 import CheckAccess from "../utils/CheckAccess"
 import Post from "./Post"
 import axios from "axios"
@@ -9,11 +9,11 @@ export default function UserPosts() {
     useEffect(()=> {
         const fetchUserPosts = async ()=> {
             try{
-                const posts = await axios.get('http://localhost:4000/getUserPost',{
+                const posts = await axios.get('http://localhost:4000/user/posts',{
                 withCredentials:true
             })
-            // setUserPosts(posts)
-            console.log(posts)
+            setUserPosts(posts.data)
+            console.log(posts.data)
         }
             catch(error) {
                 console.log('Error Fetching User Posts')
@@ -26,7 +26,9 @@ export default function UserPosts() {
 
     return (
         <>
-            {userPosts}
+            {userPosts.map((post) => (
+                <Post key={post._id} post={post} />
+            ))}
         </>
     )
 }
