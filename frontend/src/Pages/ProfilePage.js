@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import CheckAccess from '../utils/CheckAccess';
 import Header from '../components/Header';
+import UserPosts from '../components/UserPosts';
 function ProfilePage() {
   const user = CheckAccess('/login')
   
@@ -10,6 +11,7 @@ function ProfilePage() {
   <Header />
   
   <h1>Welcome to the Profile Page {user.username} </h1>
+  <UserPosts />
   </>)
 }
 

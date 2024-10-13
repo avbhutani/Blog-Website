@@ -16,7 +16,7 @@ async function LoginUser(req, res) {
             if(!isMatch){
                 throw new Error('Invalid Credentials.')
             }
-            jwt.sign({id:user._id,username},process.env.JWT_KEY,{expiresIn:500},(err,token)=> {
+            jwt.sign({id:user._id,username},process.env.JWT_KEY,{expiresIn:100000000},(err,token)=> {
                 res.cookie('token', token, {
                     httpOnly: true, // Prevents client-side JavaScript from accessing the cookie
                     secure: process.env.NODE_ENV === 'production', // Send cookie only over HTTPS in production

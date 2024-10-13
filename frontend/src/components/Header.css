@@ -4,9 +4,9 @@
   flex:1;
   justify-content: space-between;
   text-decoration: none;
-  background-color: rgb(23, 131, 233);
+  background-color: rgb(65, 105, 225);
   padding: 15px;
-  .home,.profile,.logout {
+  .home,.profile,.logout,.createPost {
     color: white;
     padding:15px 10px;
   }
@@ -14,7 +14,7 @@
   .header-loggedin-right {
     justify-content: space-evenly;
   }
-  .home:hover,.profile:hover, .logout:hover {
+  .home:hover,.profile:hover, .logout:hover,.createPost:hover {
     color: rgb(23, 131, 233);
     background-color: white;
   }
