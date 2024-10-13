@@ -13,7 +13,6 @@ async function CreatePost(req,res) {
     const userPost = new UserPost({title:t,author:user.username,img:i,content:c})
     try{
         const savedUserPost = await userPost.save()
-        console.log(userPost)
         let userPosts = await Posts.findOne({ userId: userId });
 
         if (!userPosts) {

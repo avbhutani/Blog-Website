@@ -3,7 +3,6 @@ import CheckAccess from "../utils/CheckAccess"
 import Post from "./Post"
 import axios from "axios"
 export default function UserPosts() {
-    const user = CheckAccess('/login')
     const [userPosts,setUserPosts] = useState([])
 
     useEffect(()=> {
@@ -20,15 +19,17 @@ export default function UserPosts() {
             }
         }
         fetchUserPosts()
-        console.log('Check Posts here')
-        console.log(userPosts)
     },[])
 
     return (
         <>
-            {userPosts.map((post) => (
+            {
+            userPosts.length ?
+            (userPosts.map((post) => (
                 <Post key={post._id} post={post} />
-            ))}
+            ))):
+            (<h1>No Posts to show</h1>)
+        }
         </>
     )
 }

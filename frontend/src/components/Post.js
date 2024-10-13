@@ -5,7 +5,7 @@
 import CheckAccess from "../utils/CheckAccess";
 import "./Post.css";
 export default function Post({post}) {
-  const user = CheckAccess(null);
+  // const user = CheckAccess(null);
   return (
     <>
       <div className="post">

@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken')
 
 async function getUserPost(req,res) {
     const token = req.cookies.token
-    console.log(token)
     const decodedToken = jwt.decode(token)
     const userId = decodedToken.id
     try{
