@@ -9,6 +9,7 @@ export default function CreatePostPage() {
     const [title,setTitle] = useState('')
     const [content,setContent] = useState('')
     const [message,setMessage] = useState('')
+    const [charRemaining,setCharRemaining] = useState(3000)
     const navigate = useNavigate()
     async function handlePostCreation(event) {
         event.preventDefault()
@@ -31,7 +32,10 @@ export default function CreatePostPage() {
             <h1>Create New Post!</h1>
                 <input type="text"  onChange={(ev)=>setTitle(ev.target.value)} className="new-post-title" placeholder="Title" spellCheck="true" autoCapitalize="on" required />
                 <input type="file" className="new-post-img-upload" />
-                <textarea className="new-post-content"  onChange={(ev)=>setContent(ev.target.value)} spellCheck="true" placeholder="Enter Content" required />
+                <textarea maxLength={3000} className="new-post-content"  onChange={(ev)=>{setContent(ev.target.value)
+                    setCharRemaining(3000 - content.length)
+                }} spellCheck="true" placeholder="Enter Content" required />
+                <h6>{charRemaining}</h6>
                 <button className="new-post-button">Create Post</button>
                 <h5>{message}</h5>
             </form>
