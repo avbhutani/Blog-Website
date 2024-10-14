@@ -6,11 +6,10 @@ import Header from '../components/Header';
 import UserPosts from '../components/UserPosts';
 function ProfilePage() {
   const user = CheckAccess('/login')
-  
   return (<>
   <Header />
   
-  <h1>Welcome to the Profile Page {user.username} </h1>
+  <h1>Your Posts, {user.username} </h1>
   <UserPosts />
   </>)
 }

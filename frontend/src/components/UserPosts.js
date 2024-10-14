@@ -16,12 +16,16 @@ export default function UserPosts() {
             setUserPosts(posts.data)
             console.log(posts.data)
         }
-            catch(error) {
-                console.log('Error Fetching User Posts')
-            }
+        catch(error) 
+        {
+            console.log('Error Fetching User Posts')
+        }
         }
         fetchUserPosts()
     },[])
+
+    // The current post id has to be sent over to the user so that,
+    // the other page shall be able to extract the info from the server right
     const handlePostClick = (postId)=> {
         navigate(`/post/${postId}`)
     }

@@ -28,6 +28,7 @@ return (
         <Header />
         {post?(<div className="expanded-post">
         <h1>{post.title}</h1>
+        <hr/>
         <h2>~ {post.author}</h2>
         <p>{post.content}</p>
         </div>):(<h1>No Post here.</h1>)}

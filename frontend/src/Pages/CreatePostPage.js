@@ -35,7 +35,7 @@ export default function CreatePostPage() {
                 <textarea maxLength={3000} className="new-post-content"  onChange={(ev)=>{setContent(ev.target.value)
                     setCharRemaining(3000 - content.length)
                 }} spellCheck="true" placeholder="Enter Content" required />
-                <h6>{charRemaining}</h6>
+                <h5>{charRemaining}</h5>
                 <button className="new-post-button">Create Post</button>
                 <h5>{message}</h5>
             </form>
