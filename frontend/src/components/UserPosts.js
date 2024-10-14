@@ -2,9 +2,11 @@ import { useEffect, useState,react } from "react"
 import CheckAccess from "../utils/CheckAccess"
 import Post from "./Post"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 export default function UserPosts() {
     const [userPosts,setUserPosts] = useState([])
-
+    const navigate = useNavigate()
+    
     useEffect(()=> {
         const fetchUserPosts = async ()=> {
             try{
@@ -20,13 +22,15 @@ export default function UserPosts() {
         }
         fetchUserPosts()
     },[])
-
+    const handlePostClick = (postId)=> {
+        navigate(`/post/${postId}`)
+    }
     return (
         <>
             {
             userPosts.length ?
             (userPosts.map((post) => (
-                <Post key={post._id} post={post} />
+                <Post key={post._id} post={post} onClick={()=> handlePostClick(post._id)}/>
             ))):
             (<h1>No Posts to show</h1>)
         }
