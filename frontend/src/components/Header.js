@@ -41,8 +41,7 @@ export default function Header() {
         <Link to='/register' className="register">Register</Link>
           </div>
       )}
-  
-      </nav>
+ </nav>
       </header>
     )
 }

@@ -1,0 +1,18 @@
+.expanded-post 
+{
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    h1 {
+        font-size: 50px;
+    }
+    h2 {
+        text-align: right;
+        margin-right: 2%;
+        color: grey;
+    }
+    p {
+       text-align: left;
+       margin: 2%;
+    }
+}

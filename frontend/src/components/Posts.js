@@ -1,10 +1,12 @@
 // PostsList.jsx
 import React, { useEffect, useState } from 'react';
 import Post from './Post';
+import ExpandedPost from '../Pages/ExpandedPost';
+import { useNavigate } from 'react-router-dom';
 
 const PostsList = () => {
     const [posts, setPosts] = useState([]); // State to store posts
-    const [loading, setLoading] = useState(true); // State to handle loading state
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -14,26 +16,28 @@ const PostsList = () => {
                 setPosts(data); // Store the fetched posts in state
             } catch (error) {
                 console.error('Error fetching posts:', error);
-            } finally {
-                setLoading(false); // Set loading to false after fetching
-            }
+            } 
         };
 
         fetchPosts();
     }, []); // Empty dependency array means this runs once when the component mounts
 
-    if (loading) {
-        return <div>Loading...</div>; // Show a loading message while fetching
-    }
 
+    const handlePostClick = async (postId)=> {
+        navigate(`/post/${postId}`)
+    }
+    
     return (
         <div className="posts-list">
             {posts.length ?(
             posts.map((post) => (
-                <Post key={post._id} post={post} /> // Map over posts and render Post component
+                <Post key={post._id} post={post} onClick={()=> handlePostClick(post._id)} /> // Map over posts and render Post component
             )))
         : <h3>You are All Catched Up!</h3>
         }
+{/* 
+{expandedPost && <ExpandedPost post={expandedPost} />} */}
+
         </div>
     );
 };

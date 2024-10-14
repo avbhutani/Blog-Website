@@ -8,6 +8,7 @@ import axios from 'axios'
 import HomePage from './Pages/HomePage'
 import Woo from "./Pages/Woo";
 import CreatePostPage from "./Pages/CreatePostPage";
+import ExpandedPost from "./Pages/ExpandedPost";
 
 axios.defaults.withCredentials = true;
 
@@ -19,7 +20,8 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/woo" element={<Woo />} />
-        <Route path="/createPost" element={<CreatePostPage />}></Route>
+        <Route path="/createPost" element={<CreatePostPage />} />
+        <Route path="/post/:id" element={<ExpandedPost />} />
     </Routes>
   );
 }

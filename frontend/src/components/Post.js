@@ -4,11 +4,11 @@
 // Rest all the data can be replaced, with the data from the backend.
 import CheckAccess from "../utils/CheckAccess";
 import "./Post.css";
-export default function Post({post}) {
+export default function Post({post, onClick}) {
   // const user = CheckAccess(null);
   return (
     <>
-      <div className="post">
+      <div className="post" onClick={onClick}>
         <div className="post-img">
           <img src={post.img} alt="Img" />
         </div>
