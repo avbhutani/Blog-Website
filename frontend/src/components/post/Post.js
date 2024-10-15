@@ -8,6 +8,8 @@ import "./Post.css";
 import { useNavigate } from "react-router-dom";
 export default function Post({post, onClick}) {
   const navigate = useNavigate()
+  const user = CheckAccess(null)
+
   async function deletePost() {
     try{
       const res = await axios.post(`http://localhost:4000/user/posts/delete/${post._id}`,{
@@ -35,7 +37,7 @@ export default function Post({post, onClick}) {
         <div className="post-contents-buttons">
         </div>
       </div>
-       <button onClick={deletePost}>Delete Post</button>
+      {(user.username === post.author)? <button onClick={deletePost}>Delete Post</button>:(<></>) }
         {/* <button onClick={console.log('Update Post')}>Edit Post</button> */}
     </>
   );
