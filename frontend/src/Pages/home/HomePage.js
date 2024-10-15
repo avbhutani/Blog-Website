@@ -4,6 +4,7 @@ import CheckAccess from "../../utils/CheckAccess";
 import { useNavigate } from 'react-router-dom';
 import Post from '../../components/post/Post';
 import PostsList from '../../components/post/Posts';
+
 export default function HomePage(props) {
     const user = CheckAccess('/login')
     

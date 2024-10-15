@@ -5,6 +5,8 @@ const CreatePostController = require('../controllers/userControllers/CreatePost.
 const GetAllPosts = require('../controllers/userControllers/GetAllPosts.controller')
 const GetUserPost = require('../controllers/userControllers/GetUserPost.controller')
 const GetPostById = require('../controllers/userControllers/GetPostById')
+const DeletePostById = require('../controllers/userControllers/DeletePostById.controller')
+const UpdatePost = require('../controllers/userControllers/UpdatePost.controller')
 // Create a new Post
 UserRoutes.post('/user/createNewPost',CreatePostController)
 
@@ -13,6 +15,10 @@ UserRoutes.get('/allposts',GetAllPosts)
 UserRoutes.get('/user/posts',GetUserPost)
 
 UserRoutes.get('/users/posts/:id',GetPostById)
+
+UserRoutes.post('/user/posts/delete/:id',DeletePostById)
+
+UserRoutes.post('/user/posts/update/:id',UpdatePost)
 
 UserRoutes.get('/profile',(req,res)=> {
     const token = req.cookies.token

@@ -2,10 +2,25 @@
 
 // The content can be dynamic, just the model structure would remain the same.
 // Rest all the data can be replaced, with the data from the backend.
+import axios from "axios";
 import CheckAccess from "../../utils/CheckAccess";
 import "./Post.css";
+import { useNavigate } from "react-router-dom";
 export default function Post({post, onClick}) {
-  // const user = CheckAccess(null);
+  const navigate = useNavigate()
+  async function deletePost() {
+    try{
+      const res = await axios.post(`http://localhost:4000/user/posts/delete/${post._id}`,{
+        withCredentials:true
+      })
+      console.log('Post delete successfully')
+      navigate(0)
+    }
+    catch(error) {
+      alert('You cannot delete other user\'s post')
+      console.log(error)
+    }
+  }
   return (
     <>
       <div className="post" onClick={onClick}>
@@ -17,7 +32,11 @@ export default function Post({post, onClick}) {
           <h3 className="post-author">~{post.author}</h3>
           <p className="post-content">{post.content}</p>
         </div>
+        <div className="post-contents-buttons">
+        </div>
       </div>
+       <button onClick={deletePost}>Delete Post</button>
+        {/* <button onClick={console.log('Update Post')}>Edit Post</button> */}
     </>
   );
 }
