@@ -8,6 +8,7 @@ import axios from 'axios'
 import HomePage from './Pages/home/HomePage'
 import CreatePostPage from "./Pages/createPost/CreatePostPage";
 import ExpandedPost from "./Pages/expandedPost/ExpandedPost";
+import EditPost from "./Pages/editPost/EditPost";
 
 axios.defaults.withCredentials = true;
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/createPost" element={<CreatePostPage />} />
         <Route path="/post/:id" element={<ExpandedPost />} />
+        <Route path="/post/edit/:id" element = {<EditPost />} />
     </Routes>
   );
 }

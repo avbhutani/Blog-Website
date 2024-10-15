@@ -11,8 +11,9 @@ async function DeletePostById(req,res) {
     try{
         const confirmUser = await UserPost.findOne({_id:postId})
         if(confirmUser.author === user) {
-        const user = await UserPost.deleteOne({_id:postId})
-        res.status(200).send({message:'Post Deleted Successfully.'})}
+        await UserPost.deleteOne({_id:postId})
+        res.status(200).send({message:'Post Deleted Successfully.'})
+    }
         else throw new error;
     } catch(error) {
         res.status(500).send({error:error})

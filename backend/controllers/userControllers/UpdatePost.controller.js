@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 
 async function UpdatePost(req,res) {
     const updatedPost = req.body
-    const userId= decodedToken.id
+   
  try{
         const userPost = await UserPost.updateOne({_id:req.params.id},
         {$set:{
