@@ -2,7 +2,7 @@
 
 // The content can be dynamic, just the model structure would remain the same.
 // Rest all the data can be replaced, with the data from the backend.
-import CheckAccess from "../utils/CheckAccess";
+import CheckAccess from "../../utils/CheckAccess";
 import "./Post.css";
 export default function Post({post, onClick}) {
   // const user = CheckAccess(null);

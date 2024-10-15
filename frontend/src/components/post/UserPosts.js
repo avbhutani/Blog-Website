@@ -1,5 +1,5 @@
 import { useEffect, useState,react } from "react"
-import CheckAccess from "../utils/CheckAccess"
+import CheckAccess from "../../utils/CheckAccess"
 import Post from "./Post"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"

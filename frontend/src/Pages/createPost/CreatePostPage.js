@@ -1,5 +1,5 @@
 import axios from "axios";
-import Header from "../components/Header";
+import Header from "../../components/header/Header";
 import { useState } from "react";
 import './CreatePostPage.css'
 import { useNavigate } from "react-router-dom";
@@ -33,7 +33,7 @@ export default function CreatePostPage() {
                 <input type="text"  onChange={(ev)=>setTitle(ev.target.value)} className="new-post-title" placeholder="Title" spellCheck="true" autoCapitalize="on" required />
                 <input type="file" className="new-post-img-upload" />
                 <textarea maxLength={3000} className="new-post-content"  onChange={(ev)=>{setContent(ev.target.value)
-                    setCharRemaining(3000 - content.length)
+                    setCharRemaining(2999 - content.length)
                 }} spellCheck="true" placeholder="Enter Content" required />
                 <h5>{charRemaining}</h5>
                 <button className="new-post-button">Create Post</button>

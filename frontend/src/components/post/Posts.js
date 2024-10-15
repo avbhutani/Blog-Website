@@ -1,7 +1,7 @@
 // PostsList.jsx
 import React, { useEffect, useState } from 'react';
 import Post from './Post';
-import ExpandedPost from '../Pages/ExpandedPost';
+import ExpandedPost from '../../Pages/expandedPost/ExpandedPost';
 import { useNavigate } from 'react-router-dom';
 
 const PostsList = () => {

@@ -2,7 +2,7 @@
 
 import { Link, useNavigate } from "react-router-dom"
 import './Header.css'
-import CheckAccess from "../utils/CheckAccess"
+import CheckAccess from "../../utils/CheckAccess"
 import axios from "axios"
 
 export default function Header() {

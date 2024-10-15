@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import CheckAccess from '../utils/CheckAccess';
-import Header from '../components/Header';
-import UserPosts from '../components/UserPosts';
+import CheckAccess from '../../utils/CheckAccess';
+import Header from '../../components/header/Header';
+
+import UserPosts from '../../components/post/UserPosts';
 function ProfilePage() {
   const user = CheckAccess('/login')
   return (<>

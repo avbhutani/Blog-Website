@@ -1,12 +1,10 @@
 import React, { useState,useRef,useContext,useEffect} from 'react'
-import Header from '../components/Header'
+import Header from '../../components/header/Header'
 import './LoginRegister.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import {UserContext} from '../contexts/UserContext'
 import ReCAPTCHA from "react-google-recaptcha"
 import { useCookies } from 'react-cookie'
-import GetUser from '../utils/GetUser'
 // Login Page.
 export default function LoginPage() {
     const recaptchaRef = useRef(); 

@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
-import Header from '../components/Header'
-import CheckAccess from "../utils/CheckAccess";
-import GetUser from '../utils/GetUser';
+import Header from '../../components/header/Header'
+import CheckAccess from "../../utils/CheckAccess";
 import { useNavigate } from 'react-router-dom';
-import Post from '../components/Post';
-import PostsList from '../components/Posts';
+import Post from '../../components/post/Post';
+import PostsList from '../../components/post/Posts';
 export default function HomePage(props) {
     const user = CheckAccess('/login')
     

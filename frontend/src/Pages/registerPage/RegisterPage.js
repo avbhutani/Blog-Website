@@ -1,16 +1,11 @@
-import './LoginRegister.css';
-import Header from '../components/Header';
+import '../loginPage/LoginRegister.css';
+import Header from '../../components/header/Header';
 import { useState,useRef, useEffect } from 'react';
 import axios from 'axios'
 import 'react-toastify/dist/ReactToastify.css';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie'
-import { ToastContainer, toast } from 'react-toastify';
-import validator from 'validator'
-import { json } from 'react-router-dom';
-import GetUser from '../utils/GetUser';
-import CheckAccess from '../utils/CheckAccess';
+import CheckAccess from '../../utils/CheckAccess';
 // Register Page.
 
 export default function RegisterPage() {
