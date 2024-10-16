@@ -13,6 +13,7 @@ export default function CreatePostPage() {
     const navigate = useNavigate()
     async function handlePostCreation(event) {
         event.preventDefault()
+        console.log(event.target)
         try {
             const res = await axios.post('http://localhost:4000/user/createNewPost',{
             title,

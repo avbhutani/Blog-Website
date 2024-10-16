@@ -26,17 +26,17 @@ export default function EditPost(post) {
         }
         
     }
-
         fixPreContent()
     },[id])
-    async function handlePostCreation(event) {
+    async function handlePostUpdation(event) {
         event.preventDefault()
         try {
-            const res = await axios.post('http://localhost:4000/user/createNewPost',{
+            const res = await axios.post(`http://localhost:4000/user/posts/update/${id}`,{
             title,
             img,
             content,
-            withCredentials:true})
+            withCredentials:true
+        })
             setMessage(res.data.message)
             navigate('/')
         }catch(error) {
@@ -46,7 +46,7 @@ export default function EditPost(post) {
     return (
         <>
             <Header />
-            <form className="create-post-form"  onSubmit={handlePostCreation}>
+            <form className="create-post-form"  onSubmit={handlePostUpdation}>
             <h1>Edit Post!</h1>
                 <input type="text" value={title} onChange={(ev)=>setTitle(ev.target.value)} className="new-post-title" placeholder="Title" spellCheck="true" autoCapitalize="on" required />
                 <input type="file" className="new-post-img-upload" />
@@ -54,7 +54,7 @@ export default function EditPost(post) {
                     setCharRemaining(2999 - content.length)
                 }} spellCheck="true" value={content} placeholder="Enter Content" required />
                 <h5>{charRemaining}</h5>
-                <button className="new-post-button">Create Post</button>
+                <button className="new-post-button">Update Post</button>
                 <h5>{message}</h5>
             </form>
         </>

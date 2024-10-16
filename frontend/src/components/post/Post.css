@@ -59,5 +59,6 @@ body {
     button {
     background-color: #066661;
     margin: 10px;
+    z-index: +1;
     }
 }

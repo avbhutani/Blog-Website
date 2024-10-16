@@ -6,7 +6,8 @@ export default function Post({post, onClick}) {
   const navigate = useNavigate()
   const user = CheckAccess(null)
   
-  async function deletePost() {
+  async function deletePost(event) {
+    event.stopPropagation()
     try{
       const res = await axios.post(`http://localhost:4000/user/posts/delete/${post._id}`,{
         withCredentials:true
@@ -20,7 +21,8 @@ export default function Post({post, onClick}) {
     }
   }
 
-  async function updatePost() {
+  async function updatePost(event) {
+    event.stopPropagation()
     navigate(`/post/edit/${post._id}`)
   }
   return (

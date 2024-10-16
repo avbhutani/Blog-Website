@@ -2,22 +2,23 @@ const UserPost = require('../../models/UserPost.model')
 const jwt = require('jsonwebtoken')
 
 async function UpdatePost(req,res) {
-    const updatedPost = req.body
-   console.log(req.params.id)
- try{
-        const userPost = await UserPost.updateOne({_id:req.params.id},
-        {$set:{
-            title:updatedPost.title,
-            author:updatedPost.author,
-            content:updatedPost.content,
-            img:""
-        }},{upsert:true}
-    )
-    res.status(200).send({message:'Post Updated Successfully!'})
-}
-    catch(error) {
-        res.status(500).send({error:error})
+    const updatedPost = {
+        title: req.body.title,
+        content: req.body.content,
+        img: req.body.img || "" // In case you want to update an image
+    };
+    const userPost = await UserPost.findByIdAndUpdate(
+        {_id:req.params.id}, // The ID of the post you want to update
+        updatedPost,   // The new data to update
+        { new: true }  // Option to return the updated document
+    );
+    
+    if (userPost) {
+        res.status(200).json({ message: 'Post updated successfully', post: userPost });
+    } else {
+        res.status(404).json({ message: 'Post not found' });
     }
+    
 }
 
 module.exports = UpdatePost
