@@ -35,11 +35,11 @@ export default function Post({post, onClick}) {
           <p className="post-content">{post.content}</p>
         </div>
         <div className="post-contents-buttons">
-        </div>
-      </div>
       {(user.username === post.author)?(<><button onClick={deletePost}>Delete Post</button>
       <button onClick={updatePost}>Edit Post</button></>
     ):(<></>) }
+        </div>
+      </div>
         {/*  */}
     </>
   );

@@ -49,5 +49,15 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
   transition: 0.3s;
-  
+  position: relative;
+}
+
+.post-contents-buttons {
+    display: flex;
+    flex-direction: row;
+    z-index: +1;
+    button {
+    background-color: #066661;
+    margin: 10px;
+    }
 }
