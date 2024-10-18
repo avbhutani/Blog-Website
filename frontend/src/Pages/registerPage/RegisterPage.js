@@ -17,13 +17,35 @@ export default function RegisterPage() {
     console.log(value)
   }
 
-
+  
+  
   // Use States
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [email,setEmail] = useState('')
   const [message,setMessage] = useState('')
 
+
+  useEffect(()=> {
+
+    async function checkLoggedStatus() {
+        try {
+            const res = await axios.get('http://localhost:4000/getCurrentUser',{
+            withCredentials:true
+        })
+        if(res)
+        {setMessage('No access')
+            navigate('/')
+            return}
+        }
+        catch(error) {
+            console.log(error)
+            return
+        }
+    }
+
+    checkLoggedStatus()
+})
   async function register(ev) {
     ev.preventDefault();
 

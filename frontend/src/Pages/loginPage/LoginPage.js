@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import ReCAPTCHA from "react-google-recaptcha"
 import { useCookies } from 'react-cookie'
+import CheckAccess from '../../utils/CheckAccess'
 // Login Page.
 export default function LoginPage() {
     const recaptchaRef = useRef(); 
@@ -12,6 +13,28 @@ export default function LoginPage() {
     const [password,setPassword] = useState('')
     const [message,setMessage] = useState('')
     const navigate = useNavigate()
+    
+   
+    useEffect(()=> {
+
+        async function checkLoggedStatus() {
+            try {
+                const res = await axios.get('http://localhost:4000/getCurrentUser',{
+                withCredentials:true
+            })
+            if(res)
+            {setMessage('No access')
+                navigate('/')
+                return}
+            }
+            catch(error) {
+                console.log(error)
+                return
+            }
+        }
+
+        checkLoggedStatus()
+    })
     
     async function loginUser(event) 
     {
@@ -34,14 +57,14 @@ export default function LoginPage() {
         })
         setMessage(res.data.message)
         navigate('/')
-    }
-    catch(error) 
-    {
-        console.log(error)
-    }
+        }
+        catch(error) 
+        {
+            console.log(error)
+        }
 
     // This will be executed when the "/login api" is not available
-}
+    }
 
     return (
         <>
