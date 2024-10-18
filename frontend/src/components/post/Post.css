@@ -1,11 +1,10 @@
 body {
     background-color: #3AAFA9;
 }
+
 .post {
-    /* background-color: rgb(84, 84, 95); */
-    /* background-color: rgb(128, 128, 128); Medium grey */
-    background-color: white;
     display: grid;
+    background-color: white;
     grid-template-columns:30% auto;
     margin: 2% 5%;
     column-gap: 10px;
