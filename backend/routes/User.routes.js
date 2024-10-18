@@ -7,9 +7,11 @@ const GetUserPost = require('../controllers/userControllers/GetUserPost.controll
 const GetPostById = require('../controllers/userControllers/GetPostById')
 const DeletePostById = require('../controllers/userControllers/DeletePostById.controller')
 const UpdatePost = require('../controllers/userControllers/UpdatePost.controller')
+
 // Create a new Post
 require('dotenv').config()
 const multer = require('multer')
+const getCurrentUser = require('../controllers/userControllers/GetCurrentUser')
 const cloudinary = require('cloudinary').v2
 
 
@@ -28,6 +30,7 @@ UserRoutes.post('/user/posts/delete/:id',DeletePostById)
 
 UserRoutes.post('/user/posts/update/:id',UpdatePost)
 
+UserRoutes.get('/getCurrentUser',getCurrentUser)
 
 cloudinary.config({ 
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
