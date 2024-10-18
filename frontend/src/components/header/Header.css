@@ -7,8 +7,9 @@
   flex:1;
   justify-content: space-between;
   text-decoration: none;
-  background-color: #3AAFA9;
+  background-color: #004542;
   padding: 15px;
+  z-index: 2;
   .home,.profile,.logout,.createPost {
     color: white;
     padding:15px 10px;
@@ -28,7 +29,7 @@
   flex:1;
   justify-content: right;
   text-decoration: none;
-  background-color: #3AAFA9;
+  background-color: #004542;
   .login, .register {
     color: white;
     padding:15px 10px;
