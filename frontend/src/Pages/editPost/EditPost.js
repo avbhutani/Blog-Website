@@ -12,7 +12,8 @@ export default function EditPost(post) {
     const [message,setMessage] = useState('')
     const [charRemaining,setCharRemaining] = useState(3000)
     const navigate = useNavigate()
-
+    const [file,setFile] = useState()
+    const formData = new FormData();
     useEffect(()=> {
         async function fixPreContent(){
         try{
@@ -28,12 +29,28 @@ export default function EditPost(post) {
     }
         fixPreContent()
     },[id])
+
+    useEffect(() => {
+        if (file) {
+            // alert(`File ${file.name} Updated Successfully!`)
+            console.log("File updated:", file);  // This will trigger when file is set
+        }
+    }, [file]);
+
     async function handlePostUpdation(event) {
         event.preventDefault()
+        
+        formData.append("file", file);  // Append the file  // Append the file
+
+    
+        
         try {
+            const uploadImage = await axios.post('http://localhost:4000/user/posts/upload/image', formData);
+            console.log('Checkc here')
+            console.log(uploadImage)
             const res = await axios.post(`http://localhost:4000/user/posts/update/${id}`,{
             title,
-            img,
+            img:uploadImage.data,
             content,
             withCredentials:true
         })
@@ -46,10 +63,10 @@ export default function EditPost(post) {
     return (
         <>
             <Header />
-            <form className="create-post-form"  onSubmit={handlePostUpdation}>
+            <form className="create-post-form" encType="multipart/form-data"  onSubmit={handlePostUpdation}>
             <h1>Edit Post!</h1>
                 <input type="text" value={title} onChange={(ev)=>setTitle(ev.target.value)} className="new-post-title" placeholder="Title" spellCheck="true" autoCapitalize="on" required />
-                <input type="file" className="new-post-img-upload" />
+                <input type="file" id="file" name="file" className="new-post-img-upload" onChange={(e)=> {setFile(e.target.files[0])}} />
                 <textarea maxLength={3000} className="new-post-content"  onChange={(ev)=>{setContent(ev.target.value)
                     setCharRemaining(2999 - content.length)
                 }} spellCheck="true" value={content} placeholder="Enter Content" required />
