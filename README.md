@@ -4,6 +4,7 @@ Pondering Pages is a full-stack blog platform built using the MERN stack (MongoD
 
 ## Authentication Workflow
 
+
 ![Authentication Workflow Image](https://res.cloudinary.com/diu8zryvu/image/upload/fl_preserve_transparency/v1729603836/Screenshot_2024-10-22_at_6.51.40_PM_kpeqrn.jpg?_s=public-apps)
 
 ## Data Models
@@ -16,3 +17,7 @@ Pondering Pages is a full-stack blog platform built using the MERN stack (MongoD
 
 ### Post Data Model
 ![Post Data Model](https://res.cloudinary.com/diu8zryvu/image/upload/v1729604547/Screenshot_2024-10-22_at_7.12.14_PM_zzfw95.png)
+
+
+## User Interaction with Posts
+![User-Post Interaction](https://res.cloudinary.com/diu8zryvu/image/upload/v1729605172/Screenshot_2024-10-22_at_7.17.09_PM_dspmxk.png)
