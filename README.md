@@ -2,6 +2,39 @@
 
 Pondering Pages is a full-stack blog platform built using the MERN stack (MongoDB, Express, React, Node.js). It allows users to create, edit, and delete blog posts, while also providing a seamless interface for readers to explore content. The project integrates user authentication and role-based access control, ensuring that only authorized users can manage posts. The responsive design ensures a smooth experience across devices, while MongoDB handles efficient data storage and retrieval. The backend is powered by Node.js and Express, enabling fast and scalable interactions between the frontend and database.
 
+## Running The project.
+
+**Remember to create a dotenv file and store all the necessary credentials, like configuring the PORT as well as the mongodb cluster URL.**
+
+1. First, just clone the project in your local Repository.
+```
+git clone https://github.com/avbhutani/Blog-Website.git
+```
+2. After cloning, as the package.json files are already present, just run the following commands for installing all the required dependencies.
+```javascript
+// For Frontend
+cd frontend
+npm install
+
+// For Backend
+cd backend
+npm install
+```
+3. After installing, just open 2 terminals, navigate to the frontend and the backend repos, and then run
+```javascript
+// For Frontend
+cd frontend
+npm start
+
+// For Backend
+cd backend
+npm start
+```
+
+
+```
+Run The Project and Enjoy!!😉
+```
 ## Authentication Workflow
 
 The authentication workflow will be as follows:
