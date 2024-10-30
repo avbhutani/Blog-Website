@@ -29,7 +29,7 @@ export default function RegisterPage() {
 
     async function checkLoggedStatus() {
         try {
-            const res = await axios.get('http://localhost:4000/getCurrentUser',{
+            const res = await axios.get('https://blog-website-backend-40diiyp9n-anubhav-bhutanis-projects.vercel.app/getCurrentUser',{
             withCredentials:true
         })
         if(res)
@@ -55,7 +55,7 @@ export default function RegisterPage() {
     }
 
     try{
-      const res = await axios.post('http://localhost:4000/register', {
+      const res = await axios.post('https://blog-website-backend-40diiyp9n-anubhav-bhutanis-projects.vercel.app/register', {
         email,
         username,
         password

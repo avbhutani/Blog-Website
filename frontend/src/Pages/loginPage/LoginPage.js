@@ -19,7 +19,7 @@ export default function LoginPage() {
 
         async function checkLoggedStatus() {
             try {
-                const res = await axios.get('http://localhost:4000/getCurrentUser',{
+                const res = await axios.get('https://blog-website-backend-40diiyp9n-anubhav-bhutanis-projects.vercel.app/getCurrentUser',{
                 withCredentials:true
             })
             if(res)
@@ -51,7 +51,7 @@ export default function LoginPage() {
 
 
         try {
-            var res = await axios.post('http://localhost:4000/login',{
+            var res = await axios.post('https://blog-website-backend-40diiyp9n-anubhav-bhutanis-projects.vercel.app/login',{
             username,
             password
         })

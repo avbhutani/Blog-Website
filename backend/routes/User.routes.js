@@ -37,6 +37,7 @@ cloudinary.config({
     api_key:process.env.CLOUDINARY_API_KEY, 
     api_secret:process.env.CLOUDINARY_API_SECRET
 });
+
 UserRoutes.post('/user/posts/upload/image', upload.single('file'), async (req, res) => {
     console.log('Check here');
     

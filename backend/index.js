@@ -14,7 +14,7 @@ require('./db/connect')
 app.use(cors({
     origin: 'http://localhost:3000',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,  // Allow credentials
+    credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],  // Allow custom headers
 }));
 
