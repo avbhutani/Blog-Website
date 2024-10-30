@@ -18,7 +18,6 @@ export default function RegisterPage() {
   }
 
   
-  
   // Use States
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
