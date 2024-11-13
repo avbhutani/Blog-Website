@@ -13,7 +13,32 @@ A basic Overview of how the authentication works is given below:
 4. If the client is trying to register, the information is stored in the database, with proper salting and then after saving, the user is redirected to the login page.
 5. A recaptcha is enabled at the register page to prevent DDOS attacks.
 6. The Auth token received in the browser is HttpOnly enabled that means that client side Js will not be able to access it, thereby preventing ***Client Side Attacks***.
-   
+
+### Authentication Pages
+### Login Page
+![Login Page](https://res.cloudinary.com/diu8zryvu/image/upload/v1731527540/Screenshot_2024-11-14_at_1.19.20_AM_aiohzv.png)
+
+### Register Page
+![Register Page](https://res.cloudinary.com/diu8zryvu/image/upload/v1731527550/Screenshot_2024-11-14_at_1.19.32_AM_nhac7v.png)
+
+
+## Website Features
+### Home Page
+![Home Page](https://res.cloudinary.com/diu8zryvu/image/upload/v1731527558/Screenshot_2024-11-14_at_1.19.55_AM_hdanlj.png)
+
+***The Home Page consists of Posts by all the people that are present on the platform, the current user will also be able to see his/her own posts. The user will be having the option to delete or update post from the Home Page Itself.***
+
+### My Posts
+![My Posts](https://res.cloudinary.com/diu8zryvu/image/upload/v1731527566/Screenshot_2024-11-14_at_1.20.34_AM_qoyueq.png)
+
+***My Posts Page list only the Posts that are owned by the current logged in user. The user will also have the option to update/delete post from this Page.***
+
+### Create Post
+![Create Post](https://res.cloudinary.com/diu8zryvu/image/upload/v1731527572/Screenshot_2024-11-14_at_1.21.10_AM_fevjaz.png)
+
+***The create Post Page is used to create a new Post by the user, the user will have the option to add the title, add an image and add the description for the post. 
+The Change of author is not possible due to security and originality concerns.***
+
 ## Data Models
 All the actors data models along with their schema is mentioned in this section. An attempt is being made so that it would be understandable for everyone.
 
